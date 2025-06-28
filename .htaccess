@@ -1,0 +1,93 @@
+RewriteEngine on
+ErrorDocument 404 http://siteniz.com/404.html
+RewriteRule ^404(\.html)$ index.php?oziywebs=404 [L,QSA]
+RewriteRule ^index(\.html)$ index.php [L,QSA]
+RewriteRule ^index$ index.php [L,QSA]
+RewriteRule ^anasayfa$ index.php [L,QSA]
+RewriteRule ^siparissorgulama/(.*)$ index.php?oziywebs=siparissorgulama [L,QSA]
+RewriteRule ^bankabilgilerimiz/(.*)$ index.php?oziywebs=bankabilgilerimiz [L,QSA]
+RewriteRule ^hesabim/(.*)$ index.php?oziywebs=hesabim [L,QSA]
+RewriteRule ^urunkarsilastirma/(.*)$ index.php?oziywebs=urunkarsilastirma [L,QSA]
+RewriteRule ^favorilerim/(.*)$ index.php?oziywebs=favorilerim [L,QSA]
+RewriteRule ^sepet/(.*)$ index.php?oziywebs=sepet [L,QSA]
+RewriteRule ^kampanyalar/(.*)$ index.php?oziywebs=kampanyalar [L,QSA]
+RewriteRule ^bloglar/(.*)$ index.php?oziywebs=bloglar [L,QSA]
+RewriteRule ^iletisim/(.*)$ index.php?oziywebs=iletisim [L,QSA]
+RewriteRule ^gununfirsati/(.*)$ index.php?oziywebs=gununfirsati [L,QSA]
+RewriteRule ^sizinicin/(.*)$ index.php?oziywebs=sizinicin [L,QSA]
+RewriteRule ^sayfa/(.*)$ index.php?oziywebs=sayfa&id=$1 [L,QSA]
+RewriteRule ^kategori/(.*)$ index.php?oziywebs=kategori&id=$1 [L,QSA]
+RewriteRule ^urun/(.*)$ index.php?oziywebs=urun&id=$1 [L,QSA]
+RewriteRule ^kampanya/(.*)$ index.php?oziywebs=kampanya&id=$1 [L,QSA]
+RewriteRule ^blog/(.*)$ index.php?oziywebs=blog&id=$1 [L,QSA]
+RewriteRule ^rizametni/(.*)$ index.php?oziywebs=rizametni [L,QSA]
+RewriteRule ^sifremiunuttum/(.*)$ index.php?oziywebs=sifremiunuttum [L,QSA]
+RewriteRule ^sss/(.*)$ index.php?oziywebs=sss&id=$1 [L,QSA]
+RewriteRule ^kullanim-kosullari/(.*)$ index.php?oziywebs=kullanimkosullari [L,QSA]
+RewriteRule ^onay(.*)$ index.php?oziywebs=onay [L,QSA]
+RewriteRule ^odeme/(.*)$ index.php?oziywebs=odeme [L,QSA]
+RewriteRule ^kontrol/(.*)$ index.php?oziywebs=kontrol [L,QSA]
+RewriteRule ^mesafeli-satis-sozlesmesi/(.*)$ index.php?oziywebs=mesafeli-satis-sozlesmesi [L,QSA]
+RewriteRule ^alisverisi-tamamla/(.*)$ index.php?oziywebs=alisverisi-tamamla [L,QSA]
+RewriteRule ^hesabim/(.*)$ index.php?oziywebs=hesabim [L,QSA]
+RewriteRule ^arama/(.*)$ index.php?oziywebs=arama [L,QSA]
+RewriteRule ^uyeol/(.*)$ index.php?oziywebs=uyeol [L,QSA]
+RewriteRule ^cikis/(.*)$ index.php?oziywebs=cikis [L,QSA]
+RewriteRule ^urunler.xml$ urunlerxml.php
+RewriteRule ^akakce.xml$ akakcexml.php
+RewriteRule ^cimri.xml$ cimrixml.php
+RewriteRule ^rss.xml$ rss.php
+RewriteRule ^sitemap.xml$ sitemap.php
+RewriteRule ^merchant.xml$ merchant.php
+RewriteRule ^paytrsonuc.php$ index.php?oziywebs=paytrsonuc [L,QSA]
+RewriteRule ^iyzicosonuc.php$ index.php?oziywebs=iyzicosonuc [L,QSA]
+RewriteRule ^shopiersonuc.php$ index.php?oziywebs=shopiersonuc [L,QSA]
+
+
+
+
+
+
+
+
+<files temaayarlari.php>
+order allow,deny
+deny from all
+</files>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “alt-php72” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-alt-php72 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+<IfModule php7_module>
+   php_flag display_errors Off
+   php_value max_execution_time 300
+   php_value max_input_time -1
+   php_value max_input_vars 1000
+   php_value memory_limit 512M
+   php_value post_max_size 256M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/opt/alt/php72/var/lib/php/session"
+   php_value upload_max_filesize 256M
+   php_flag zlib.output_compression Off
+</IfModule>
+<IfModule lsapi_module>
+   php_flag display_errors Off
+   php_value max_execution_time 300
+   php_value max_input_time -1
+   php_value max_input_vars 1000
+   php_value memory_limit 512M
+   php_value post_max_size 256M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/opt/alt/php72/var/lib/php/session"
+   php_value upload_max_filesize 256M
+   php_flag zlib.output_compression Off
+</IfModule>
+# END cPanel-generated php ini directives, do not edit

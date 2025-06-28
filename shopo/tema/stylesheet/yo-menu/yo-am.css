@@ -1,0 +1,233 @@
+/*
+ * YO Menu v1.2.0
+ * Author: iDiY (info@idiy.club)
+ */
+
+/*  Default Style  */
+.yo-menu
+{ 
+    margin-bottom: 0px;
+}
+.yo-heading
+{ font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    position: relative;border-radius:3px;
+    padding: 13px 14px 31px;
+    cursor: pointer;
+	width:50px;
+	margin:0px 0 0 25px;
+   
+     color:#fff;
+    background-color:#717477;
+
+}
+
+.yo-heading.yo-open
+{width:50px;
+    border-bottom-color: transparent;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.yo-heading.yo-close
+{
+    background-color: none;
+}
+.yo-heading i.fa.fa-bars
+{font-size:25px;
+    line-height: 20px;
+    float: right;
+}
+.yo-wrapper
+{    	background: #EEE;min-width:220px;
+    border-radius: 5px; 
+}
+.yo-heading + .yo-wrapper
+{ 
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+.yo-menu ul.yo-am li
+{
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+.yo-menu ul.yo-am li + li,
+.yo-menu ul.yo-am li li
+{
+    border-top: 1px solid #EEE;
+	border-bottom: 0px solid #273747;
+}
+.yo-menu ul.yo-am li a
+{font-size:14px;
+    padding: 10px 20px 10px 12px;
+   
+    text-decoration: none;font-weight:normal;
+    color: #717477; font-weight:600;
+    background-color: #FFF;
+     
+}
+.yo-menu ul.yo-am li a:hover
+{
+    color: #365271;
+    background-color:#EEE;
+}
+.yo-menu ul.yo-am li a.active
+{
+    font-weight: bold;
+    color: #365271;
+    background-color: #EEE;
+}
+/*  End Default Style  */
+
+ul.yo-am,
+ul.yo-am ul
+{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+ul.yo-am ul
+{
+    display: none;
+}
+ul.yo-am li
+{
+    position: relative;
+    display: block;
+    float: none;
+}
+ul.yo-am li a
+{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+ul.yo-am li a.am-item
+{
+    padding-right: 2.6em;
+}
+ul.yo-am li.active > ul
+{
+    display: block;
+}
+ul.yo-am li a span
+{
+    position: relative;
+    vertical-align: middle;
+}
+ul.yo-am li a span.am-badge
+{
+    font-size: 85%;
+    font-weight: bold;
+    margin-left: .4em;
+    padding: 2px 6px;
+    text-align: center;
+    color: #717477;
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px;
+    background-color: #f5f5f5;
+}
+ul.yo-am li a.am-parent span.am-arrow:after
+{
+    font-family: FontAwesome;
+    float: right;
+    margin-right: -4px;
+    content: '\f105';
+}
+ul.yo-am li.am-item-open > a.am-parent span.am-arrow:after
+{
+    margin-right: -5px;
+    content: '\f107';
+}
+ul.yo-am li a.am-tb
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding-right: 14px;
+    padding-left: 14px;
+    color: #bbb;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+}
+ul.yo-am li a.am-item:hover + a.am-tb,
+ul.yo-am li a.am-tb:hover
+{
+    -webkit-box-shadow: -1px 1px 0 0 rgba(0, 0, 0, .05);
+       -moz-box-shadow: -1px 1px 0 0 rgba(0, 0, 0, .05);
+            box-shadow: -1px 1px 0 0 rgba(0, 0, 0, .05);
+}
+ul.yo-am li a.am-tb span:before
+{
+    font-family: FontAwesome;
+    font-size: 10px;
+    content: '\f067';
+}
+ul.yo-am li.am-item-open > a.am-tb span:before
+{
+    content: '\f068';
+}
+ul.yo-am .am-price
+{
+    font-size: 85%;
+    float: right;
+    margin-left: .4em;
+    padding: 0 .6em;
+    text-align: center;
+    color: #444;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+    background-color: #f5f5f5;
+}
+ul.yo-am li.am-image > a,
+ul.yo-am li a.am-image
+{
+    padding: 3px !important;
+    text-align: center;
+}
+ul.yo-am img
+{
+    overflow: hidden;
+    max-width: 100% !important;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+}
+ul.yo-am img.am-icon
+{
+    margin-right: .7em;
+}
+ul.yo-am li a img.am-icon + span
+{
+    display: inline;
+}
+ul.yo-am li li a:first-child
+{
+    padding-left: 2.2em;
+}
+ul.yo-am li li li a:first-child
+{
+    padding-left: 3.2em;
+}
+ul.yo-am li li li li a:first-child
+{
+    padding-left: 4.2em;
+}
+ul.yo-am li li li li li a:first-child
+{
+    padding-left: 5.2em;
+}

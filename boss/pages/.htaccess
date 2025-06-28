@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteRule ^index(\.html)$ index.html [L,QSA]
+RewriteRule ^index(\.php)$ index.html [L,QSA]
+<FilesMatch "*\.(php|php3)$">
+Order Allow,Deny
+deny from all
+</FilesMatch>

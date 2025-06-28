@@ -1,0 +1,107 @@
+@charset "utf-8";
+/* CSS Document */
+.manset-slider{border:1px solid #dcdbdb; padding:0 !important;}
+.manset-slider .manset-img{padding: 0; margin: 0;}
+.manset-slider .manset-img li{width:100%; display:none; position:relative;}
+.manset-slider .manset-img a{padding:0; display:block;}
+.manset-slider .manset-img li a img{width:100%; height:auto;}
+.manset-slider span{width:100%; height:40px; background:#000; line-height:40px; display:block; font-size:20px; color:#FFF; overflow:hidden; position:absolute; bottom:0; text-align:center; z-index:4; margin:0; padding:0;}
+.manset-slider span:hover{color:#CCC; background:#333;}
+
+.manset-slider .manset_butonlar{margin: 0; padding: 0; height: 55px; background: #fff; text-align:center;}
+.manset-slider .manset_butonlar li{list-style:none; display: inline-block; margin:0; padding:0; width: 10%;}
+.manset-slider .manset_butonlar a{display:block; text-align:center; width:100%; height:55px; border-bottom: 5px solid transparent; background-color:#FFF;}
+
+.manset-slider .manset_butonlar li.aktifbuton a{border-bottom: 5px solid #000;}
+.manset-slider .manset_butonlar li:hover a{border-bottom: 5px solid #000;}
+.eleman{display:block!important;}
+
+/* SLIDER GUNCELLEME YUSUF 28.12.20 */
+
+.manset-slider img::selection{background-color:transparent;} 
+
+.manset-slider .manset_butonlar{height:74px!important;}
+.manset-slider .manset_butonlar li{height:auto!important;padding: 7px 1px!important;}
+//.manset-slider .manset_butonlar li.aktifbuton{border-bottom:2px solid #6fbdce!important;}
+//.manset-slider .manset_butonlar li:hover{border-bottom:2px solid #6fbdce!important;}
+
+.manset-slider .manset_butonlar li a{display:block;height:65px!important; margin:0!important;}
+.manset-slider .manset_butonlar li.aktifbuton a{border-bottom:none!important;}
+.manset-slider .manset_butonlar li:hover a{border-bottom:none!important;}
+
+.manset-slider .manset_butonlar li a img{border-radius:15px!important;object-fit:cover;width:100%!important;height:60px!important;border:2px solid transparent;}
+.manset-slider .manset_butonlar li.aktifbuton a img{border:2px solid #6ba3af;}
+.manset-slider .manset_butonlar li:hover a img{border:2px solid #6ba3af;}
+
+@media (max-width: 1199px) {
+.manset-slider .manset_butonlar{height:60px!important;}
+.manset-slider .manset_butonlar li{padding: 5px 1px!important;}
+.manset-slider .manset_butonlar li a{height:55px!important;}
+.manset-slider .manset_butonlar li a img{max-height:50px!important;}
+}
+
+@media (max-width: 991px) {
+.manset-slider .manset_butonlar{height:55px!important; padding: 0px 5px;}
+.manset-slider .manset_butonlar li a{height:52.5px!important;}
+.manset-slider .manset_butonlar li a img{max-height:45px!important;border-radius:12.5px!important}
+}
+
+@media (max-width: 768px) {
+.manset-slider .manset_butonlar{padding:0px 7px;}  
+}
+
+@media (max-width: 700px) {
+.manset-slider .manset_butonlar{height:55px!important;}
+.manset-slider .manset_butonlar li{padding: 5px 1px!important;}
+.manset-slider .manset_butonlar li a{height:52.5px!important;}
+.manset-slider .manset_butonlar li a img{height:52.5px!important;border-radius:12.5px!important}
+}
+
+@media (max-width: 650px) {
+.manset-slider .manset_butonlar{height:52px!important;}
+.manset-slider .manset_butonlar li{padding: 3px 1px!important;}
+.manset-slider .manset_butonlar li a{height:45px!important;}
+.manset-slider .manset_butonlar li a img{height:45px!important;border-radius:12.5px!important}
+}
+
+@media (max-width: 600px) {
+.manset-slider .manset_butonlar{height:47px!important;}
+.manset-slider .manset_butonlar li{padding: 3px 0px!important;}
+.manset-slider .manset_butonlar li a{height:40px!important;}
+.manset-slider .manset_butonlar li a img{height:40px!important;border-radius:12.5px!important}
+}
+
+@media (max-width: 550px) {
+.manset-slider .manset_butonlar{height:40px!important;}
+.manset-slider .manset_butonlar li{padding: 3px 0px!important;}
+.manset-slider .manset_butonlar li a{height:35px!important;}
+.manset-slider .manset_butonlar li a img{height:35px!important;border-radius:10px!important}
+}
+
+@media (max-width: 500px) {
+.manset-slider .manset_butonlar{height:35px!important;}
+.manset-slider .manset_butonlar li{padding: 3px 0px!important;}
+.manset-slider .manset_butonlar li a{height:30px!important;}
+.manset-slider .manset_butonlar li a img{height:30px!important;border-radius:10px!important}
+}
+
+@media (max-width: 450px) {
+.manset-slider .manset_butonlar{height:34px!important;}
+.manset-slider .manset_butonlar li{padding: 3px 0px!important;}
+.manset-slider .manset_butonlar li a{height:28px!important;}
+.manset-slider .manset_butonlar li a img{height:28px!important;border-radius:10px!important}
+}
+
+@media (max-width: 400px) {
+.manset-slider .manset_butonlar{height:31px!important;}
+.manset-slider .manset_butonlar li{padding: 2px 0px!important;}
+.manset-slider .manset_butonlar li a{height:27px!important;}
+.manset-slider .manset_butonlar li a img{height:27px!important;border-radius:8px!important}
+}
+
+@media (max-width: 350px) {
+.manset-slider .manset_butonlar{height:30px!important;}
+.manset-slider .manset_butonlar li{padding: 2px 0px!important;}
+.manset-slider .manset_butonlar li a{height:25px!important;}
+.manset-slider .manset_butonlar li a img{height:25px!important;border-radius:6px!important}
+}
