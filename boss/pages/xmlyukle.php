@@ -122,8 +122,12 @@ foreach($obj as $ob) {
                     $katresim = "resimyok.jpg";
 					$ustkat = "0";
 					$level = "0";
-					$veriekle = $ozy->prepare("INSERT INTO kategoriler SET adi=?, seo=?, durum =?, resim =?, ustkat=?, level=?");
-					$veriekle->execute(array($katadi, $katseo, $katdurum, $katresim, $ustkat, $level));
+                    $ac="0";
+                    if ($katCount <= 1) {
+                        $ac="1";
+                    }
+					$veriekle = $ozy->prepare("INSERT INTO kategoriler SET adi=?, seo=?, ac=?, durum =?, resim =?, ustkat=?, level=?");
+					$veriekle->execute(array($katadi, $katseo, $ac, $katdurum, $katresim, $ustkat, $level));
 					$katida = $ozy->lastInsertId();
 				}
 				
