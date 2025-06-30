@@ -231,9 +231,7 @@
 
                             <div class="dropdown-menu">
                                 <nav class="side-nav">
-                                    <ul class="menu-vertical sf-arrows sf-js-enabled" style="touch-action: pan-y; max-height: 300px;
-  overflow-y: auto;
-  overflow-x: hidden;">
+                                    <ul class="menu-vertical sf-arrows sf-js-enabled" style="touch-action: pan-y; max-height: 300px; overflow-y: auto; overflow-x: hidden;">
                                        
 
 				<?php $ustkattt = $ozy->query("select * from kategoriler where durum='1' and ustkat='0' order by sira desc")->fetchAll(PDO::FETCH_ASSOC); 
