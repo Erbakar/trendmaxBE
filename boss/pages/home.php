@@ -193,7 +193,7 @@ echo '<script type="text/javascript">$(document).ready(function(){toastr["succes
                                 <a target="_blank" href="urun/duzenle/<?php echo $stokurun['id']; ?>" class="friends-suggestions-list">
                                     <div class="border-bottom position-relative">
                                         <div class="float-left mb-0 mr-3">
-                                            <img src="../resimler/urunler/<?php echo $stokurun['resim']; ?>" class="rounded-circle thumb-md">
+                                            <img src="../resimler/genel/<?php echo $stokurun['resim']; ?>" class="rounded-circle thumb-md">
                                         </div>
                                         <div class="suggestion-icon float-right mt-2 pt-1">
                                             <i class="mdi mdi-plus"></i>

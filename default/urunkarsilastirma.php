@@ -43,7 +43,7 @@
 	
     <td><span class="txt-l">
 	 <a href="urun/<?php echo $karsilastirma['seo'];?>" class="product-image">
-      <img src="resimler/urunler/<?php echo $karsilastirma['resim'];?>" alt="product">
+      <img src="resimler/genel/<?php echo $karsilastirma['resim'];?>" alt="product">
     </a>
                             
 	</span></td>

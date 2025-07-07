@@ -64,7 +64,7 @@ foreach($mar as $marka){?>
 <kisaaciklama><![CDATA[<?php echo $urun['kisa']; ?>]]></kisaaciklama>
 <aciklama><![CDATA[<?php echo $urun['aciklama']; ?>]]></aciklama>
 <aramafiltre><![CDATA[<?php echo $urun['filtre']; ?>]]></aramafiltre>
-<resim><![CDATA[<?php echo $url; ?>/resimler/urunler/<?php echo $urun['resim']; ?>]]></resim>
+<resim><![CDATA[<?php echo $url; ?>/resimler/genel/<?php echo $urun['resim']; ?>]]></resim>
 <?php $gelenid = $urun['id'];
 $i = 0;
 $sayfaresimi = $ozy->query("select * from tumresimler where sayfaid='$gelenid' and alan='urunler' order by id desc")->fetchAll(PDO::FETCH_ASSOC); 

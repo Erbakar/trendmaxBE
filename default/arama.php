@@ -153,7 +153,7 @@ $urunkodu = substr($urunkodu, 0, -4);
                                     <div class="product product-2 urunmargin">
                                     <figure class="product-media">
                                     <a href="urun/<?php echo $katurunler['seo']; ?>">
-                                        <img style="width: 200px;height: 210px;" src="resimler/urunler/<?php echo $katurunler['resim']; ?>" alt="Product image" class="product-image">
+                                        <img style="width: 200px;height: 210px;" src="resimler/genel/<?php echo $katurunler['resim']; ?>" alt="Product image" class="product-image">
                                     </a>
 									<?php if($katurunler['yeni']=='1'){?>
                                     <span class="product-label label-circle label-new">Yeni Ürün</span>

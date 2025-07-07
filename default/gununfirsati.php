@@ -136,7 +136,7 @@
 								
 								 
                     <div class="col-lg-6 deal-col">
-                        <div class="deal" style="background-image: url('resimler/urunler/<?php echo $gfirsat['firsatresim']; ?>');">
+                        <div class="deal" style="background-image: url('resimler/genel/<?php echo $gfirsat['firsatresim']; ?>');">
                             <div class="deal-top">
                                 <h2>Günün Fırsat Ürünü</h2>
                                 <h4><?php echo $gfirsat['kisa']; ?></h4>

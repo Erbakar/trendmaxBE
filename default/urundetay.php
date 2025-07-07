@@ -121,10 +121,10 @@ if ($page['idurum'] == '1') {
                                     <div class="product-zoom-cover">&nbsp;</div>
 
                                     <img class="lazyload" id="product-zoom"
-                                        data-src="resimler/urunler/<?php echo $page['resim'] ?>"
-                                        data-zoom-image="resimler/urunler/<?php echo $page['resim'] ?>">
+                                        data-src="resimler/genel/<?php echo $page['resim'] ?>"
+                                        data-zoom-image="resimler/genel/<?php echo $page['resim'] ?>">
 
-                                    <a href="resimler/urunler/<?php echo $page['resim'] ?>" id="btn-product-gallery"
+                                    <a href="resimler/genel/<?php echo $page['resim'] ?>" id="btn-product-gallery"
                                         class="btn-product-gallery">
                                         <i class="icon-arrows"></i>
                                     </a>
@@ -132,10 +132,10 @@ if ($page['idurum'] == '1') {
 
                                 <div id="product-zoom-gallery" class="product-image-gallery">
                                     <a class="product-gallery-item active"
-                                        href="resimler/urunler/<?php echo $page['resim'] ?>"
-                                        data-image="resimler/urunler/<?php echo $page['resim'] ?>"
-                                        data-zoom-image="resimler/urunler/<?php echo $page['resim'] ?>">
-                                        <img class="lazyload" data-src="resimler/urunler/<?php echo $page['resim'] ?>">
+                                        href="resimler/genel/<?php echo $page['resim'] ?>"
+                                        data-image="resimler/genel/<?php echo $page['resim'] ?>"
+                                        data-zoom-image="resimler/genel/<?php echo $page['resim'] ?>">
+                                        <img class="lazyload" data-src="resimler/genel/<?php echo $page['resim'] ?>">
                                     </a>
 
 
@@ -235,7 +235,7 @@ if ($page['idurum'] == '1') {
                                             <a href="urun/<?php echo $varyantbak['seo']; ?>"
                                                 style="border: 1px solid gainsboro;border-radius: 2px;">
                                                 <img class="lazyload"
-                                                    data-src="resimler/urunler/<?php echo $varyantbak['resim']; ?>">
+                                                    data-src="resimler/genel/<?php echo $varyantbak['resim']; ?>">
                                             </a>
                                         <?php } ?>
 
@@ -649,7 +649,7 @@ if ($page['idurum'] == '1') {
                         <figure class="product-media">
                             <a href="urun/<?php echo $katurunler['seo']; ?>">
                                 <img class="lazyload" style="width: 230px;height: 245px;"
-                                    data-src="resimler/urunler/<?php echo $katurunler['resim']; ?>" alt="Product image"
+                                    data-src="resimler/genel/<?php echo $katurunler['resim']; ?>" alt="Product image"
                                     class="product-image">
                             </a>
                             <?php if ($katurunler['yeni'] == '1') { ?>

@@ -943,7 +943,7 @@ foreach ($pageoku as $katurunler) {
 
 
 													<img class="lazyload" style="width: 218px;height: 245px;"
-														data-src="/resimler/urunler/<?php echo $katurunler['resim']; ?>"
+														data-src="/resimler/genel/<?php echo $katurunler['resim']; ?>"
 														alt="Product image" class="product-image">
 
 

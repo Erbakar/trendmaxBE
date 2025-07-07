@@ -125,7 +125,7 @@
                             <div class="product product-2">
                                 <figure class="product-media">
                                     <a href="urun/<?php echo $anaurunler['seo']; ?>">
-                                        <img   style="width: 218px;height: 249px;" src="resimler/urunler/<?php echo $anaurunler['resim']; ?>" alt="Product image" class="product-image">
+                                        <img   style="width: 218px;height: 249px;" src="resimler/genel/<?php echo $anaurunler['resim']; ?>" alt="Product image" class="product-image">
                                     </a>
 									<?php if($anaurunler['yeni']=='1'){?>
                                     <span class="product-label label-circle label-new">Yeni Ürün</span>
@@ -204,7 +204,7 @@
 
 				
                     <div class="col-lg-6 deal-col">
-                        <div class="deal" style="background-image: url('resimler/urunler/<?php echo $gfirsat['firsatresim']; ?>');">
+                        <div class="deal" style="background-image: url('resimler/genel/<?php echo $gfirsat['firsatresim']; ?>');">
                             <div class="deal-top">
                                 <h2>Günün Fırsat Ürünü</h2>
                                 <h4><?php echo $gfirsat['kisa']; ?></h4>
@@ -304,7 +304,7 @@
                             <div class="product product-2">
                                 <figure class="product-media">
                                     <a href="urun/<?php echo $katurunler['seo']; ?>">
-                                        <img   style="width: 218px;height: 245px;" src="resimler/urunler/<?php echo $katurunler['resim']; ?>" alt="Product image" class="product-image">
+                                        <img   style="width: 218px;height: 245px;" src="resimler/genel/<?php echo $katurunler['resim']; ?>" alt="Product image" class="product-image">
                                     </a>
 									<?php if($katurunler['yeni']=='1'){?>
                                     <span class="product-label label-circle label-new">Yeni Ürün</span>
@@ -392,7 +392,7 @@
                                <div class="product product-2">
                                <figure class="product-media">    
 							   <a href="urun/<?php echo $sizinicin['seo']; ?>">    
-							   <img   style="width: 278px;height: 310px;" src="resimler/urunler/<?php echo $sizinicin['resim']; ?>" alt="Product image" class="product-image">     
+							   <img   style="width: 278px;height: 310px;" src="resimler/genel/<?php echo $sizinicin['resim']; ?>" alt="Product image" class="product-image">     
                                </a>		
 							   <?php if($sizinicin['yeni']=='1'){?>   
 							   <span class="product-label label-circle label-new">Yeni Ürün</span>	

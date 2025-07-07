@@ -185,7 +185,7 @@
 
                                         <figure class="product-image-container">
                                             <a href="urun/<?php echo $sepet['seo'];?>" class="product-image">
-                                                <img   src="resimler/urunler/<?php echo $sepet['resim'];?>" alt="product">
+                                                <img   src="resimler/genel/<?php echo $sepet['resim'];?>" alt="product">
                                             </a>
                                         </figure>
 										<form action="" method="POST">

@@ -12,6 +12,7 @@ if (isset($_POST['guncelle'])) {
   $xmlurl   = temizle($_POST['xmlurl']);
   $urunadi   = temizle($_POST['urunadi']);
   $urunkodu   = temizle($_POST['urunkodu']);
+  $urunbarkodu   = temizle($_POST['urunbarkodu']);
   $stok   = temizle($_POST['stok']);
   $fiyat   = temizle($_POST['fiyat']);
   $kdv   = temizle($_POST['kdv']);
@@ -36,8 +37,8 @@ if (isset($_POST['guncelle'])) {
   $anaresim = trim(($_POST['anaresim'] != "") ? $_POST['anaresim'] : "0");
   
   $id = $_GET['duzenle'];
-  $stmt = $ozy->prepare("UPDATE xml SET xmlurl = ?, urunadi = ?, urunkodu = ?, stok = ?, fiyat = ?, kdv = ?, aciklama = ?, resim = ?, kategori = ?, durum = ?, resim1 = ?, resim2 = ?, resim3 = ?, resim4 = ?, resim5 = ?, resim6 = ?, resim7 = ?, resim8 = ?, resim9 = ?, yukledurum = ?, marka = ?, kattip = ?, parcatip = ?, resimtip = ?, anaresim = ? WHERE id = ?");
-  $result2 = $stmt->execute(array($xmlurl, $urunadi, $urunkodu, $stok, $fiyat, $kdv, $aciklama, $resim, $kategori, $durum, $resim1, $resim2, $resim3, $resim4, $resim5, $resim6, $resim7, $resim8, $resim9, $yukledurum, $marka, $kattip, $parcatip, $resimtip, $anaresim, $id));
+  $stmt = $ozy->prepare("UPDATE xml SET xmlurl = ?, urunadi = ?, urunkodu = ?, urunbarkodu = ?, stok = ?, fiyat = ?, kdv = ?, aciklama = ?, resim = ?, kategori = ?, durum = ?, resim1 = ?, resim2 = ?, resim3 = ?, resim4 = ?, resim5 = ?, resim6 = ?, resim7 = ?, resim8 = ?, resim9 = ?, yukledurum = ?, marka = ?, kattip = ?, parcatip = ?, resimtip = ?, anaresim = ? WHERE id = ?");
+  $result2 = $stmt->execute(array($xmlurl, $urunadi, $urunkodu, $urunbarkodu, $stok, $fiyat, $kdv, $aciklama, $resim, $kategori, $durum, $resim1, $resim2, $resim3, $resim4, $resim5, $resim6, $resim7, $resim8, $resim9, $yukledurum, $marka, $kattip, $parcatip, $resimtip, $anaresim, $id));
   if($result2){
 	echo '<meta http-equiv="refresh" content="1; url='.$id.'">'; 	
 
@@ -74,6 +75,7 @@ foreach($obj as $ob) {
    $xurunadi = trim(($urun->$urunadi != "") ? $urun->$urunadi : "0");
    $xseo		= seo($xurunadi);
    $xurunkodu = trim(($urun->$urunkodu != "") ? $urun->$urunkodu : "0");
+   $xurunbarkodu = trim(($urun->$urunbarkodu != "") ? $urun->$urunbarkodu : "0");
    $xstok = trim(($urun->$stok != "") ? $urun->$stok : "0");
    $xfiyat = trim(($urun->$fiyat != "") ? $urun->$fiyat : "0");
    $xkdv = ($urun->$kdv != "") ? $urun->$kdv : "0";
@@ -232,9 +234,9 @@ foreach($obj as $ob) {
 
                 $resimkonum = $sonuc[0];
 				$resimad = basename($resimkonum);
-				$uzanti = substr($resimad, -5, 5);
-				$yeniad = rand().md5(time($resimad)) . $uzanti;
-				$yol = "../resimler/urunler";
+				$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+				$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
+				$yol = "../resimler/genel";
 				$image = file_get_contents($resimkonum);
 				file_put_contents($yol . '/' . $yeniad, $image);
 
@@ -242,17 +244,17 @@ foreach($obj as $ob) {
        
                 $resimkonum = $urun->$resim;
 				$resimad = basename($resimkonum);
-				$uzanti = substr($resimad, -5, 5);
-				$yeniad = rand().md5(time($resimad)) . $uzanti;
-				$yol = "../resimler/urunler";
+				$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+				$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
+				$yol = "../resimler/genel";
 				$image = file_get_contents($resimkonum);
 				file_put_contents($yol . '/' . $yeniad, $image);
 
                 }
    
-   $stmtx = $ozy->prepare("INSERT INTO urunler (adi, seo, urunkodu, parabirimi, stok, fiyat, kdv, aciklama, kategori, durum, tarih, yildiz, resim, marka) 
-   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-   $result2x = $stmtx->execute(array($xurunadi, $xseo, $xurunkodu, $parabirimi, $xstok, $xfiyat, $xkdv, $xaciklama, $katid, $durum, $tarih, $yildiz, $yeniad, $markaid));
+   $stmtx = $ozy->prepare("INSERT INTO urunler (adi, seo, urunkodu, urunbarkodu, parabirimi, stok, fiyat, kdv, aciklama, kategori, durum, tarih, yildiz, resim, marka) 
+   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+   $result2x = $stmtx->execute(array($xurunadi, $xseo, $xurunkodu, $xurunbarkodu, $parabirimi, $xstok, $xfiyat, $xkdv, $xaciklama, $katid, $durum, $tarih, $yildiz, $yeniad, $markaid));
    $urun_id = $ozy->lastInsertId();
 	
    $markasil = $ozy->exec("DELETE FROM markalar WHERE adi=' '");
@@ -264,8 +266,8 @@ foreach($obj as $ob) {
 	if (isset($sonuc[1]) && $sonuc[1] != " ") {
 	$resimkonum = $sonuc[1];
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -276,8 +278,8 @@ foreach($obj as $ob) {
 	if (isset($sonuc[2]) && $sonuc[2] != " ") {
 	$resimkonum = $sonuc[2];
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -288,8 +290,8 @@ foreach($obj as $ob) {
 	if (isset($sonuc[3]) && $sonuc[3] != " ") {
 	$resimkonum = $sonuc[3];
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -300,8 +302,8 @@ foreach($obj as $ob) {
 	if (isset($sonuc[4]) && $sonuc[4] != " ") {
 	$resimkonum = $sonuc[4];
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -313,8 +315,8 @@ foreach($obj as $ob) {
 	if (isset($sonuc[5]) && $sonuc[5] != " ") {
 	$resimkonum = $sonuc[5];
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -326,8 +328,8 @@ foreach($obj as $ob) {
 	if (isset($sonuc[6]) && $sonuc[6] != " ") {
 	$resimkonum = $sonuc[6];
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -339,8 +341,8 @@ foreach($obj as $ob) {
 	if (isset($sonuc[7]) && $sonuc[7] != " ") {
 	$resimkonum = $sonuc[7];
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -352,8 +354,8 @@ foreach($obj as $ob) {
 	if (isset($sonuc[8]) && $sonuc[8] != " ") {
 	$resimkonum = $sonuc[8];
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -365,8 +367,8 @@ foreach($obj as $ob) {
 	if (isset($sonuc[9]) && $sonuc[9] != " ") {
 	$resimkonum = $sonuc[9];
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -381,8 +383,8 @@ foreach($obj as $ob) {
 	if (isset($urun->$resim1) && $urun->$resim1 != " ") {
 	$resimkonum = $urun->$resim1;
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -393,8 +395,8 @@ foreach($obj as $ob) {
 	if (isset($urun->$resim2) && $urun->$resim2 != " ") {
 	$resimkonum = $urun->$resim2;
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -407,8 +409,8 @@ foreach($obj as $ob) {
 	if (isset($urun->$resim3) && $urun->$resim3 != " ") {
 	$resimkonum = $urun->$resim3;
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -421,8 +423,8 @@ foreach($obj as $ob) {
 	if (isset($urun->$resim4) && $urun->$resim4 != " ") {
 	$resimkonum = $urun->$resim4;
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -434,8 +436,8 @@ foreach($obj as $ob) {
 	if (isset($urun->$resim5) && $urun->$resim5 != " ") {
 	$resimkonum = $urun->$resim5;
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -447,8 +449,8 @@ foreach($obj as $ob) {
 	if (isset($urun->$resim6) && $urun->$resim6 != " ") {
 	$resimkonum = $urun->$resim6;
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -460,8 +462,8 @@ foreach($obj as $ob) {
 	if (isset($urun->$resim7) && $urun->$resim7 != " ") {
 	$resimkonum = $urun->$resim7;
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -473,8 +475,8 @@ foreach($obj as $ob) {
 	if (isset($urun->$resim8) && $urun->$resim8 != " ") {
 	$resimkonum = $urun->$resim8;
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -486,8 +488,8 @@ foreach($obj as $ob) {
 	if (isset($urun->$resim9) && $urun->$resim9 != " ") {
 	$resimkonum = $urun->$resim9;
 	$resimad = basename($resimkonum);
-	$uzanti = substr($resimad, -5, 5);
-	$yeniad = rand().md5(time($resimad)) . $uzanti;
+	$uzanti = pathinfo($resimad, PATHINFO_EXTENSION);
+	$yeniad = rand().md5(time().$resimad) . ($uzanti ? '.' . $uzanti : '');
 	$yol = "../resimler/genel";
 	$image = file_get_contents($resimkonum);
 	file_put_contents($yol . '/' . $yeniad, $image);
@@ -580,6 +582,7 @@ if (isset($_POST['kaydet'])) {
   $xmlurl   = trim(temizle($_POST['xmlurl']));
   $urunadi   = trim(temizle($_POST['urunadi']));
   $urunkodu   = trim(temizle($_POST['urunkodu']));
+  $urunbarkodu   = trim(temizle($_POST['urunbarkodu']));
   $stok   = trim(temizle($_POST['stok']));
   $fiyat   = trim(temizle($_POST['fiyat']));
   $kdv   = trim(temizle($_POST['kdv']));
@@ -604,9 +607,9 @@ if (isset($_POST['kaydet'])) {
   $resimtip   = trim(temizle($_POST['resimtip']));
   $anaresim = trim(($_POST['anaresim'] != "") ? $_POST['anaresim'] : "0");
 
-   $stmt = $ozy->prepare("INSERT INTO xml (xmlurl, urunadi, urunkodu, stok, fiyat, kdv, aciklama, resim, kategori, durum, tarih, resim1, resim2, resim3, resim4, resim5, resim6, resim7, resim8, resim9, marka, kattip, parcatip, resimtip, anaresim) 
-   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-   $result2 = $stmt->execute(array($xmlurl, $urunadi, $urunkodu, $stok, $fiyat, $kdv, $aciklama, $resim, $kategori, $durum, $tarih, $resim1, $resim2, $resim3, $resim4, $resim5, $resim6, $resim7, $resim8, $resim9, $marka, $kattip, $parcatip, $resimtip, $anaresim));
+   $stmt = $ozy->prepare("INSERT INTO xml (xmlurl, urunadi, urunkodu, urunbarkodu, stok, fiyat, kdv, aciklama, resim, kategori, durum, tarih, resim1, resim2, resim3, resim4, resim5, resim6, resim7, resim8, resim9, marka, kattip, parcatip, resimtip, anaresim) 
+   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+   $result2 = $stmt->execute(array($xmlurl, $urunadi, $urunkodu, $urunbarkodu, $stok, $fiyat, $kdv, $aciklama, $resim, $kategori, $durum, $tarih, $resim1, $resim2, $resim3, $resim4, $resim5, $resim6, $resim7, $resim8, $resim9, $marka, $kattip, $parcatip, $resimtip, $anaresim));
    $id = $ozy->lastInsertId();
    
    
@@ -746,13 +749,18 @@ if (isset($_POST['kaydet'])) {
                                     <input class="form-control" type="text" name="parcatip" value="<?php echo $sayfam['parcatip']; ?>" placeholder="örnek > , / ...vb" >
                                 </div>
                             </div>
-							
-							
-							
+							 
 							<div class="form-group row">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Ürün Kodu</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" name="urunkodu" value="<?php echo $sayfam['urunkodu']; ?>" placeholder="urunkodu" >
+                                </div>
+                            </div>
+							
+							<div class="form-group row">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Ürün Barkodu</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" name="urunbarkodu" value="<?php echo $sayfam['urunbarkodu']; ?>" placeholder="urunbarkodu" >
                                 </div>
                             </div>
 							

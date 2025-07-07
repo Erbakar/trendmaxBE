@@ -47,7 +47,7 @@
 									<div class="product">
 										<figure class="product-media">
 											<a href="urun/<?php echo $favoriler['seo'];?>">
-												<img src="resimler/urunler/<?php echo $favoriler['resim'];?>" alt="Product image">
+												<img src="resimler/genel/<?php echo $favoriler['resim'];?>" alt="Product image">
 											</a>
 										</figure>
 

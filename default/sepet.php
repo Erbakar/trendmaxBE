@@ -69,7 +69,7 @@
 												<div class="product">
 													<figure class="product-media">
 														<a href="urun/<?php echo $sepet['seo'];?>">
-															<img src="resimler/urunler/<?php echo $sepet['resim'];?>" alt="Product image">
+															<img src="resimler/genel/<?php echo $sepet['resim'];?>" alt="Product image">
 														</a>
 													</figure>
 

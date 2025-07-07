@@ -138,7 +138,7 @@
                                <div class="product product-2">
                                <figure class="product-media">    
 							   <a href="urun/<?php echo $sizinicin['seo']; ?>">    
-							   <img class="lazyload"  style="width: 278px;height: 310px;" data-src="resimler/urunler/<?php echo $sizinicin['resim']; ?>" alt="Product image" class="product-image">     
+							   <img class="lazyload"  style="width: 278px;height: 310px;" data-src="resimler/genel/<?php echo $sizinicin['resim']; ?>" alt="Product image" class="product-image">     
                                </a>		
 							   <?php if($sizinicin['yeni']=='1'){?>   
 							   <span class="product-label label-circle label-new">Yeni Ürün</span>	
