@@ -432,41 +432,7 @@ $path = substr($yol, 0, (strlen($yol) - 17));
 
                            
                       <div class="tab-pane active p-3" id="home-1" role="tabpanel">
-                       
-                      <div class="form-group row">  
-					  <div class="box">
-	                  <div class="heading">Tema Yükleme Alanı</div>
-                      <div class="form_field">
-					  Sadece Zip Dosyası yükleyebilirsiniz :</br> Lütfen zip dosyasını yüklemeden online virüs taramasından geçiriniz.
-                      </br><a href="https://www.virustotal.com/gui/" target="_blank">Online Virüs Tarama</a>	</br>
-					  </br>
-		              <form enctype="multipart/form-data" method="post" action="">
-		              <input type="file" class="btn btn-outline-primary waves-effect waves-light" name="zip_file">
-		              <br><br>
-		              <input type="submit" name="submit" value="Temayı Yükle" class="btn btn-outline-primary waves-effect waves-light upload"> <br><br>
-		              </form>
-	                  </div>
-					  
-					
-                            <label style="text-align: center;border-bottom: 1px solid #f1ecec;margin-bottom: 8px;" for="example-text-input" class="col-lg-12 col-form-label">Yüklü Temalar</label>
-                            <div class="col-lg-12">
-                            <?php $tmlr = $ozy->query("select * from temalar")->fetchAll(PDO::FETCH_ASSOC); 
-                            foreach($tmlr as $tm){?>
-                           
-                           
-                            <label style="border: 1px solid #e4e4e5;border-radius: 2px;text-align: center;" for="demo-inline-form-radio-<?php echo $tm['adi']; ?>"><img  style="height: 60px;width: 100px;" src="../<?php echo $tm['adi'];?>/<?php echo $tm['temaresim']; ?>"></br><?php echo $tm['adi']; ?>
-							</br>
-							<a href="temaayarlari?tema=<?php echo $id;?>&temasil=<?php echo $tm['id']; ?>" onclick="return confirm('Tema komple sisteminizden kalıcı olarak siliencektir. Onaylıyor musunuz ?')" class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Sil"><i class="ti-trash" aria-hidden="true"></i></a>									 
-							</img></label>
-                            <?php } ?>
-                            
-
-								</div>
-                          
-							
-					  
-                      </div>
-                      </div>					
+                       					
 					
 					
 					
